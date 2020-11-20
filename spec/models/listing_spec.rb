@@ -2,14 +2,16 @@
 #
 # Table name: listings
 #
-#  id         :bigint           not null, primary key
-#  location   :string
-#  name       :string
-#  uid        :integer
-#  url        :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint
+#  id                 :bigint           not null, primary key
+#  average_daily_rate :decimal(, )
+#  location           :string
+#  name               :string
+#  occupancy_rate     :decimal(, )
+#  uid                :integer
+#  url                :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  user_id            :bigint
 #
 # Indexes
 #

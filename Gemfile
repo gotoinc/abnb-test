@@ -82,7 +82,7 @@ group :development, :test do
   gem 'annotate'
 
   # Draper adds an object-oriented layer of presentation logic to your Rails application.
-  gem 'draper'
+  # gem 'draper'
 end
 
 group :development do

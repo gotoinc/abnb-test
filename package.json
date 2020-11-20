@@ -11,6 +11,7 @@
     "sass-loader": "^10.1.0",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.12",
+    "vue-axios": "^3.2.0",
     "vue-cli-plugin-vuetify": "^2.0.7",
     "vue-loader": "^15.9.5",
     "vue-template-compiler": "^2.6.12",

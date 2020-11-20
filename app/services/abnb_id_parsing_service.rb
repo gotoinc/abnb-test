@@ -10,7 +10,8 @@ class AbnbIdParsingService
 
   def call(url:)
     browser.get(url)
-
+    uid
+    browser.quit
     Result.new(uid, url)
   end
 
@@ -21,6 +22,6 @@ class AbnbIdParsingService
   end
 
   def uid
-    browser.find_element(:css, SELECTOR_ABNB_ID)&.attribute('value') rescue nil
+    @uid ||= browser.find_element(:css, SELECTOR_ABNB_ID)&.attribute('value') rescue nil
   end
 end

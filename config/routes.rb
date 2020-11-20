@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :listings, only: %i[index create]
+    resource :users
   end
 
   devise_for :user, only: %i[sessions registrations]

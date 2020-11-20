@@ -2,8 +2,6 @@
 
 class ListingService
 
-  PreparedItem = -> (result) {  { date: result.date, available: result.available } }
-
   attr_accessor :data,
                 :dates,
                 :listing
@@ -16,12 +14,19 @@ class ListingService
 
   def call
     listing.assign_attributes(data.to_h)
-    listing.assign_attributes(DataParsingService.new(uid: data.uid).call.to_h) if listing.valid?
 
-    Statistic.upsert_all(
-      dates_parser.call(data.uid).map { |item| item.to_h.merge({ listing_id: listing.id }) },
-      unique_by: %i[listing_id date]
-    ) if listing.save
+    if listing.valid?
+      listing.assign_attributes(DataParsingService.new(uid: data.uid).call.to_h)
+
+      if listing.save
+        Statistic.upsert_all(
+          dates_parser.call(data.uid).map { |item| item.to_h.merge({ listing_id: listing.id }) },
+          unique_by: %i[listing_id date]
+        )
+      end
+
+      listing.update_columns(calculation_service.call.to_h)
+    end
 
     listing
   end
@@ -30,5 +35,9 @@ class ListingService
 
   def dates_parser
     DatesParsingService.new
+  end
+
+  def calculation_service
+    CalculationService.new(listing)
   end
 end
