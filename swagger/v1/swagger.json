@@ -1,0 +1,49 @@
+{
+  "swagger": "2.0",
+  "basePath": "/api",
+  "info": {
+    "title": "ABNB API",
+    "version": "v1"
+  },
+  "paths": {
+    "/listings": {
+      "get": {
+        "summary": "Listings list",
+        "tags": [
+          "Dashboard"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Listings collection"
+          }
+        }
+      },
+      "post": {
+        "summary": "Creation listing",
+        "tags": [
+          "Dashboard"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listing"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+  }
+}
